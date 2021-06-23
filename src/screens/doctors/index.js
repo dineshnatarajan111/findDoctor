@@ -7,14 +7,10 @@ import {
   Platform,
 } from 'react-native'
 
-class Splash extends Component {
-  componentDidMount() {
-    this.props.navigation.navigate("Home");
-  }
+class Doctors extends Component {
   render(){
     return(
       <SafeAreaView style={styles.container}>
-        
       </SafeAreaView>
     );
   }
@@ -28,4 +24,4 @@ const styles = StyleSheet.create({
 })
 
 
-export default Splash;
+export default Doctors;

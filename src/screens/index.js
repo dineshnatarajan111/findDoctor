@@ -5,6 +5,7 @@ import Signup from './signup'
 import MapView from './mapview'
 import Messaging from './messaging'
 import Featured from './featured'
+import Doctors from './doctors'
 import Profile from './profile'
 
 export {
@@ -16,4 +17,5 @@ export {
     Messaging,
     Featured,
     Profile,
+    Doctors
 }

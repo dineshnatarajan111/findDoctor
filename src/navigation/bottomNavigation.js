@@ -23,15 +23,26 @@ import {
 
 const Tab = createBottomTabNavigator();
 
+const Dummy = () => {
+    return(
+        <View 
+        style = {{
+            flex : 1,
+            backgroundColor : '#14152B'
+        }}
+        />
+    )
+}
+
 class BottomTabs extends React.Component {
     render(){
         return (
             <Tab.Navigator
-            initialRouteName = "MapView"
+            initialRouteName = "Messaging"
             tabBarOptions = {{
                 showLabel : false,
                 style : {
-                    height : Dimensions.get("window").height / 11,
+                    height : Dimensions.get("window").height / 10,
                     backfaceVisibility : 'visible',
                     backgroundColor : '#20223F',
                     borderTopWidth : 0,
@@ -41,7 +52,17 @@ class BottomTabs extends React.Component {
                 }
             }}
             >
-            <Tab.Screen name="MapView" component={MapView} options={{
+            <Tab.Screen name="Dummy" component={Dummy} 
+            listeners={({ navigation }) => ({
+                tabPress: (e) => {
+                  // Prevent default action
+                  e.preventDefault();
+        
+                  // Do something with the `navigation` object
+                  navigation.navigate("MapView");
+                },
+            })}
+            options={{
                 tabBarIcon: ({ color, size, focused }) => (
                     focused ?
                     <View style = {styles.btn}>
@@ -51,7 +72,7 @@ class BottomTabs extends React.Component {
                     :
                     <Home color = "#FFFFFF" />
                 )
-                }}  
+                }}
             />
             <Tab.Screen name="Messaging" component={Messaging} options={{
                 tabBarIcon: ({ color, size, focused }) => (

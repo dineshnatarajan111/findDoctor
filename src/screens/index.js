@@ -7,6 +7,7 @@ import Messaging from './messaging'
 import Featured from './featured'
 import Doctors from './doctors'
 import Profile from './profile'
+import Conversation from './conversation'
 
 export {
     Splash,
@@ -17,5 +18,6 @@ export {
     Messaging,
     Featured,
     Profile,
-    Doctors
+    Doctors,
+    Conversation,
 }

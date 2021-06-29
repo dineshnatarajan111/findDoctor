@@ -9,6 +9,7 @@ import {
   Platform,
   TextInput,
   FlatList,
+  TouchableOpacity,
 } from 'react-native'
 import moment from 'moment';
 import { Icon } from 'react-native-elements'
@@ -23,12 +24,27 @@ class Messaging extends Component {
       ],
     }
   }
+  messageNav = () => {
+    this.props.navigation.navigate("Conversation");
+  }
   render(){
     const _renderItem = () => {
       return(
-        <View style={styles.card}>
+        <TouchableOpacity 
+        onPress={this.messageNav}
+        style={styles.card}>
           <View style={styles.imgWrap}>
-            <View style={styles.img}></View>
+            <View style={styles.img}>
+              <Image 
+              source = {require("../../assets/Rounded.png")}
+              style={{
+                flex : 1,
+                height : null,
+                width : null,
+                borderRadius : 20,
+              }}
+              />
+            </View>
           </View>
           <View style={styles.infos}>
             <Text style={styles.name}>Dr. Rachel Zane</Text>
@@ -37,7 +53,7 @@ class Messaging extends Component {
               <Text style={styles.timeTxt}>{moment().format("HH:mm")}</Text>
             </View>
           </View>
-        </View>
+        </TouchableOpacity>
       );
     }
     return(
@@ -70,6 +86,8 @@ class Messaging extends Component {
         <FlatList 
         data = {this.state.data}
         renderItem = {_renderItem}
+        keyExtractor={(item, index) => index.toString()}
+        showsVerticalScrollIndicator = {false}
         />
       </SafeAreaView>
     );
